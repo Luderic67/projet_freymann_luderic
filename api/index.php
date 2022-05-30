@@ -99,7 +99,7 @@ $app->post('/api/signin', function(Request $request, Response $response, $args) 
     $data["expiration_time"] = time() + TOKEN_EXPIRATION_TIME;
 
     $response = addHeaders($response);
-    $response = createJWT($response, $login);
+    $response = createJWT($response, $username);
     $response->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
 
     return $response;
