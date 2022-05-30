@@ -1,0 +1,53 @@
+Product:
+    type: entity
+    table: product
+    id:
+        id:
+            type: string
+            nullable: false
+            length: 36
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        description:
+            type: string
+            nullable: false
+            length: 500
+            options:
+                fixed: false
+        price:
+            type: decimal
+            nullable: false
+            precision: 4
+            scale: 2
+        stockSector:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: stock_sector
+        stockName:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: stock_name
+        stockMarket:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: stock_market
+    lifecycleCallbacks: {  }

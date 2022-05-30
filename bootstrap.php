@@ -11,7 +11,7 @@ date_default_timezone_set('Europe/Paris');
 class Config {
     private static ?Config $instance = null;
     public ?EntityManager $entityManager = null;
-    public ?mixed $options = null;
+    public $options = null;
 
     private function __construct()
     {
