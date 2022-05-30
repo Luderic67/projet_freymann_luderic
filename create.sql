@@ -1,3 +1,6 @@
+begin;
+set transaction read write;
+
 DROP TABLE IF EXISTS Client;
 DROP TABLE IF EXISTS Product;
 
@@ -11,15 +14,14 @@ CREATE TABLE Client(
 );
 
 CREATE TABLE Product(
-   id SERIAL PRIMARY KEY
-  ,name         VARCHAR(32) NOT NULL
+   id           VARCHAR(36) NOT NULL PRIMARY KEY
+  ,name         VARCHAR(255) NOT NULL
   ,description  VARCHAR(500) NOT NULL
   ,price        NUMERIC(4,2) NOT NULL
-  ,stock_sector VARCHAR(48) NOT NULL
-  ,stock_name   VARCHAR(48) NOT NULL
-  ,stock_market VARCHAR(48) NOT NULL
+  ,stock_sector VARCHAR(255) NOT NULL
+  ,stock_name   VARCHAR(255) NOT NULL
+  ,stock_market VARCHAR(255) NOT NULL
 );
-
 INSERT INTO Product(id,name,description,price,stock_sector,stock_name,stock_market) VALUES ('83a76d45-c400-4942-b3c5-d608c391f3fc','Squeeze Bottle','Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.
 
 In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.',2.86,'n/a','Royal Dutch Shell PLC','NYSE');
@@ -327,3 +329,4 @@ INSERT INTO Product(id,name,description,price,stock_sector,stock_name,stock_mark
 
 Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.',1.11,'Technology','Oclaro, Inc.','NASDAQ');
 
+COMMIT;
