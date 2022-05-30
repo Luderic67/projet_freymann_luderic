@@ -3,6 +3,8 @@
 require '../vendor/autoload.php';
 require_once __DIR__ . '/../bootstrap.php';
 require_once __DIR__ . '/utils.php';
+require_once __DIR__ . './../src/models/Client.php';
+require_once __DIR__ . './../src/models/Product.php';
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
