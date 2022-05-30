@@ -73,7 +73,7 @@ $app->post('/api/signin', function(Request $request, Response $response, $args) 
 
     // Si un des champs est manquant
     if ($error) {
-        $data["error"] = "Error with the accounts field";
+        $data["error"] = "One of the fileds is missing, fileds require : [username, password]";
         $response = $response->withStatus(403);
         $response->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
         return $response;
@@ -84,7 +84,7 @@ $app->post('/api/signin', function(Request $request, Response $response, $args) 
 
     // Si il n'y a pas de client avec l'email ou mot de passe
     if ($client == null || !password_verify($password, $client->getPassword())) {
-        $data["error"] = "Error with the email or password";
+        $data["error"] = "Wrong email or password";
         $response = $response->withStatus(403);
         $response->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
         return $response;
@@ -104,6 +104,7 @@ $app->post('/api/signin', function(Request $request, Response $response, $args) 
 });
 
 $app->get('/api/products', function(Request $request, Response $response, $args) {
+    // Récupère tous les produits via le repository d'entityManager
     $productRepository = Config::getInstance()->entityManager->getRepository('Product');
     $products = $productRepository->findAll();
 
