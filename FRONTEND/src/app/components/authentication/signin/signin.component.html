@@ -1,0 +1,22 @@
+<div class="card">
+  <h2 class="card_title">SIGNIN</h2>
+  <form class="form" [formGroup]="signinForm" (ngSubmit)="handleSubmit()">
+    <div class="form-group">
+      <div class="form-field">
+        <label for="username">Username <span>*</span></label>
+        <input id="username" type="text" formControlName="username" />
+        <app-control-messages
+          [control]="signinForm.get('username')"
+        ></app-control-messages>
+      </div>
+      <div class="form-field">
+        <label for="password">Password <span>*</span></label>
+        <input id="password" type="password" formControlName="password" />
+        <app-control-messages
+          [control]="signinForm.get('password')"
+        ></app-control-messages>
+      </div>
+    </div>
+    <button type="submit">Signin</button>
+  </form>
+</div>

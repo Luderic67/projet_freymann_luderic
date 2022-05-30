@@ -1,0 +1,14 @@
+<div class="card">
+  <h2 class="card_title">CATALOG</h2>
+  <app-searchbar (setList)="setList($event)"></app-searchbar>
+  <app-list-item
+    *ngFor="let product of products"
+    [isDeletable]="false"
+    [product]="product"
+    [quantity]="null"
+  ></app-list-item>
+  <div class="error-container" *ngIf="!(products.length)">
+    <h3>Nothing found</h3>
+    <fa-icon class="icon" [icon]="['fas', 'frown']"></fa-icon>
+  </div>
+</div>
