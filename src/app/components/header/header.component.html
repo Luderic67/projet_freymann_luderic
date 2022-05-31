@@ -1,11 +1,18 @@
 <div class="nav">
-  <div class="nav-segment" id="left"><p>Ludéric Freymann</p></div>
+  <div class="nav-segment" id="left">
+    <p *ngIf="currentUser">{{ currentUser.username }}</p>
+  </div>
   <div class="nav-segment" id="middle">
     <h1 routerLink="/">Projet - Angular</h1>
   </div>
   <div class="nav-segment" id="right">
-    <a routerLink="/authentication/signin">Signin</a>
-    <a routerLink="/authentication/signup">Signup</a>
+    <div class="align-center" *ngIf="!currentUser">
+      <a routerLink="/authentication/signin">Signin</a>
+      <a routerLink="/authentication/signup">Signup</a>
+    </div>
+    <div class="align-center" *ngIf="currentUser">
+      <button (click)="signout()">Signout</button>
+    </div>
     <a routerLink="/products/catalog">Catalog</a>
     <a routerLink="/products/cart" class="icon">
       <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>

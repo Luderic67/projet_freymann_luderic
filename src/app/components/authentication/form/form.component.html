@@ -46,4 +46,7 @@
     </div>
   </div>
   <button type="submit">Submit</button>
+  <div *ngIf="error" class="error">
+    <span>{{ error }}</span>
+  </div>
 </form>

@@ -18,5 +18,8 @@
       </div>
     </div>
     <button type="submit">Signin</button>
+    <div *ngIf="error" class="error">
+      <span>{{ error }}</span>
+    </div>
   </form>
 </div>

@@ -17,6 +17,38 @@
     height: 90px;
   }
 
+  .align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    cursor: pointer;
+    background: black;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: 0.3s all ease;
+    margin: 0.5rem;
+    font-size: 1rem;
+    padding: 0.3rem 1.2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+    }
+  }
+
   &-segment {
     flex: 1;
     display: flex;

@@ -12,6 +12,16 @@ select:focus {
   outline: none;
 }
 
+.error {
+  margin-top: 1rem;
+
+  span {
+    color: red;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+  }
+}
+
 .form {
   &-field {
     display: flex;
