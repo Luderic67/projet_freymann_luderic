@@ -1,15 +1,15 @@
-import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { ReactiveFormsModule } from "@angular/forms";
-import { ApiHttpInterceptor } from "./api/api-httpinterceptor";
-import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./components/header/header.component";
-import { FooterComponent } from "./components/footer/footer.component";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ApiHttpInterceptor } from './api/api-httpinterceptor';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import {
   FontAwesomeModule,
   FaIconLibrary,
-} from "@fortawesome/angular-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/angular-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   faSearch,
   faFrown,
@@ -18,45 +18,44 @@ import {
   faTrash,
   faMapMarkedAlt,
   faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FormComponent } from "./components/authentication/form/form.component";
-import { ControlMessagesComponent } from "./components/authentication/control-messages/control-messages.component";
-import { ResumeComponent } from "./components/authentication/resume/resume.component";
-import { PhoneNumberPipe } from "./pipes/phone-number.pipe";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { ListItemComponent } from "./components/catalog/list-item/list-item.component";
-import { SearchbarComponent } from "./components/catalog/searchbar/searchbar.component";
-import { SignupComponent } from "./components/authentication/signup/signup.component";
-import { NotFoundComponent } from "./components/errors/not-found/not-found.component";
-import { HomeComponent } from "./components/home/home.component";
-import { CartComponent } from "./components/catalog/cart/cart.component";
-import { CatalogComponent } from "./components/catalog/catalog/catalog.component";
-import { NgxsModule } from "@ngxs/store";
-import { RouterModule, Routes } from "@angular/router";
-import { ProductState } from "shared/states/products-state";
-import { ProductDetailsComponent } from "./components/catalog/product-details/product-details.component";
-import { SigninComponent } from "./components/authentication/signin/signin.component";
-import { ListService } from "./services/list.service";
-import { AuthenticationService } from "./services/authentication.service";
+} from '@fortawesome/free-solid-svg-icons';
+import { FormComponent } from './components/authentication/form/form.component';
+import { ControlMessagesComponent } from './components/authentication/control-messages/control-messages.component';
+import { PhoneNumberPipe } from './pipes/phone-number.pipe';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ListItemComponent } from './components/catalog/list-item/list-item.component';
+import { SearchbarComponent } from './components/catalog/searchbar/searchbar.component';
+import { SignupComponent } from './components/authentication/signup/signup.component';
+import { NotFoundComponent } from './components/errors/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { CartComponent } from './components/catalog/cart/cart.component';
+import { CatalogComponent } from './components/catalog/catalog/catalog.component';
+import { NgxsModule } from '@ngxs/store';
+import { RouterModule, Routes } from '@angular/router';
+import { ProductState } from 'shared/states/products-state';
+import { ProductDetailsComponent } from './components/catalog/product-details/product-details.component';
+import { SigninComponent } from './components/authentication/signin/signin.component';
+import { ListService } from './services/list.service';
+import { AuthenticationService } from './services/authentication.service';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: '', component: HomeComponent },
   {
-    path: "authentication",
+    path: 'authentication',
     loadChildren: () =>
-      import("./components/authentication/client.module").then(
+      import('./components/authentication/client.module').then(
         (m) => m.ClientModule
       ),
   },
   {
-    path: "products",
+    path: 'products',
     loadChildren: () =>
-      import("./components/catalog/catalog.module").then(
+      import('./components/catalog/catalog.module').then(
         (m) => m.CatalogModule
       ),
   },
-  { path: "not-found-404", component: NotFoundComponent },
-  { path: "**", redirectTo: "not-found-404" },
+  { path: 'not-found-404', component: NotFoundComponent },
+  { path: '**', redirectTo: 'not-found-404' },
 ];
 
 @NgModule({
@@ -66,7 +65,6 @@ const routes: Routes = [
     FooterComponent,
     FormComponent,
     ControlMessagesComponent,
-    ResumeComponent,
     PhoneNumberPipe,
     ListItemComponent,
     SearchbarComponent,
