@@ -21,7 +21,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FormComponent } from './components/authentication/form/form.component';
 import { ControlMessagesComponent } from './components/authentication/control-messages/control-messages.component';
-import { PhoneNumberPipe } from './pipes/phone-number.pipe';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListItemComponent } from './components/catalog/list-item/list-item.component';
 import { SearchbarComponent } from './components/catalog/searchbar/searchbar.component';
@@ -65,7 +64,6 @@ const routes: Routes = [
     FooterComponent,
     FormComponent,
     ControlMessagesComponent,
-    PhoneNumberPipe,
     ListItemComponent,
     SearchbarComponent,
     SignupComponent,
