@@ -1,6 +1,6 @@
 <div class="nav">
   <div class="nav-segment" id="left">
-    <p *ngIf="currentUser">{{ currentUser.username }}</p>
+    <a routerLink="/account" *ngIf="currentUser">{{ currentUser.username }}</a>
   </div>
   <div class="nav-segment" id="middle">
     <h1 routerLink="/">Projet - Angular</h1>

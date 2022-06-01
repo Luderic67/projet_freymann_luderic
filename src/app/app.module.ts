@@ -35,6 +35,7 @@ import { ProductState } from 'shared/states/products-state';
 import { ProductDetailsComponent } from './components/catalog/product-details/product-details.component';
 import { SigninComponent } from './components/authentication/signin/signin.component';
 import { AuthenticationService } from './services/authentication.service';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -52,6 +53,7 @@ const routes: Routes = [
         (m) => m.CatalogModule
       ),
   },
+  { path: 'account', component: AccountComponent },
   { path: 'not-found-404', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found-404' },
 ];
@@ -73,6 +75,7 @@ const routes: Routes = [
     ProductDetailsComponent,
     HomeComponent,
     SigninComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+<div class="card">
+  <h2 class="card_title">YOUR ACCOUNT</h2>
+  <div *ngIf="currentUser">
+    <p>Firstname: {{ currentUser.first_name }}</p>
+    <p>Lastname: {{ currentUser.last_name }}</p>
+    <p>Email: {{ currentUser.email }}</p>
+    <p>Username: {{ currentUser.username }}</p>
+  </div>
+</div>
