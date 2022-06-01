@@ -10,8 +10,7 @@ export class ValidationService {
       required: 'Required',
       invalidPhoneNumber: 'Is invalid phone number',
       invalidEmailAddress: 'Invalid email address',
-      invalidPassword:
-        'Invalid password. Password must be at least 6 characters long, and contain a number.',
+      passwordNotCorresponding: 'Passwords not matches',
       minlength: `Minimum length ${validatorValue.requiredLength}`,
     };
 
@@ -39,13 +38,22 @@ export class ValidationService {
     }
   }
 
-  static passwordValidator(control: FormControl) {
-    // {6,100}           - Assert password is between 6 and 100 characters
-    // (?=.*[0-9])       - Assert a string has at least one number
-    if (control.value.match(/^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{6,100}$/)) {
-      return null;
+  static passwordsValidator(control: FormControl) {
+    let password = control.get('password');
+    let confirm_password = control.get('confirm_password');
+    if (password?.value !== confirm_password?.value) {
+      password?.setErrors({ passwordNotCorresponding: true });
+      confirm_password?.setErrors({ passwordNotCorresponding: true });
+      return { passwordNotCorresponding: true };
+    } else if (
+      password?.value.trim() === '' ||
+      confirm_password?.value.trim() === ''
+    ) {
+      return { required: true };
     } else {
-      return { invalidPassword: true };
+      password?.setErrors(null);
+      confirm_password?.setErrors(null);
+      return null;
     }
   }
 }

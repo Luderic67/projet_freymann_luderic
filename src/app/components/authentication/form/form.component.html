@@ -44,6 +44,17 @@
         [control]="registrationForm.get('password')"
       ></app-control-messages>
     </div>
+    <div class="form-field">
+      <label for="confirm_password">Confirm Password <span>*</span></label>
+      <input
+        id="confirm_password"
+        type="password"
+        formControlName="confirm_password"
+      />
+      <app-control-messages
+        [control]="registrationForm.get('confirm_password')"
+      ></app-control-messages>
+    </div>
   </div>
   <button type="submit">Submit</button>
   <div *ngIf="error" class="error">

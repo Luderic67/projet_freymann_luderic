@@ -20,13 +20,17 @@ export class FormComponent {
     private authenticationService: AuthenticationService,
     private router: Router
   ) {
-    this.registrationForm = this.formBuilder.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-      email: ['', [Validators.required, ValidationService.emailValidator]],
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-    });
+    this.registrationForm = this.formBuilder.group(
+      {
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
+        email: ['', [Validators.required, ValidationService.emailValidator]],
+        username: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirm_password: ['', [Validators.required, Validators.minLength(8)]],
+      },
+      { validators: ValidationService.passwordsValidator }
+    );
   }
 
   handleSubmit(): void {
