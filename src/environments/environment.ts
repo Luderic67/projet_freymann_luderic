@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'assets/mock/list.json',
+  URL_GET_PRODUCTS: '/api/products',
+  URL_SIGNIN: '/api/signin',
+  URL_SIGNUP: '/api/signup',
 };
 
 /*

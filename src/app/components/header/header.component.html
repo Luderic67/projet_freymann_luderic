@@ -12,13 +12,13 @@
     </div>
     <div class="align-center" *ngIf="currentUser">
       <button (click)="signout()">Signout</button>
+      <a routerLink="/products/catalog">Catalog</a>
+      <a routerLink="/products/cart" class="icon">
+        <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+        <p *ngIf="productsNumber$ | async as productsNumber">
+          {{ productsNumber }}
+        </p>
+      </a>
     </div>
-    <a routerLink="/products/catalog">Catalog</a>
-    <a routerLink="/products/cart" class="icon">
-      <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-      <p *ngIf="productsNumber$ | async as productsNumber">
-        {{ productsNumber }}
-      </p>
-    </a>
   </div>
 </div>

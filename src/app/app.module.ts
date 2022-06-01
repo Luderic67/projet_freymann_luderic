@@ -34,7 +34,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductState } from 'shared/states/products-state';
 import { ProductDetailsComponent } from './components/catalog/product-details/product-details.component';
 import { SigninComponent } from './components/authentication/signin/signin.component';
-import { ListService } from './services/list.service';
 import { AuthenticationService } from './services/authentication.service';
 
 const routes: Routes = [
@@ -85,7 +84,6 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
   providers: [
-    ListService,
     AuthenticationService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true },
   ],

@@ -1,24 +1,32 @@
-import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngxs/store";
-import { SetCart } from "shared/actions/product.action";
-import { CartProduct } from "shared/models/cartProduct";
+import { Component, OnInit } from '@angular/core';
+import { Store, UpdateState } from '@ngxs/store';
+import { SetCart } from 'shared/actions/product.action';
+import { CartProduct } from 'shared/models/cartProduct';
+import { User } from 'shared/models/user';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  title = "luderic-freymann-app";
+export class AppComponent {
+  title = 'luderic-freymann-app';
 
-  constructor(private store: Store) {}
+  currentUser!: User;
 
-  ngOnInit(): void {
-    this.store.dispatch(new SetCart(this.getLocalCart()));
+  constructor(
+    private authenticationService: AuthenticationService,
+    private store: Store
+  ) {
+    this.authenticationService.currentUser.subscribe((user) => {
+      this.currentUser = user;
+      this.store.dispatch(new SetCart(this.getLocalCart()));
+    });
   }
 
   getLocalCart(): CartProduct[] {
-    const localCart = localStorage.getItem("cart");
+    const localCart = localStorage.getItem('cart-' + this.currentUser.username);
     if (localCart) {
       return JSON.parse(localCart);
     }

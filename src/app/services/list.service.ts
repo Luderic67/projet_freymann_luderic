@@ -11,6 +11,6 @@ export class ListService {
   constructor(private http: HttpClient) {}
 
   getList(): Observable<Product[]> {
-    return this.http.get<Product[]>(environment.baseUrl);
+    return this.http.get<Product[]>(environment.URL_GET_PRODUCTS);
   }
 }

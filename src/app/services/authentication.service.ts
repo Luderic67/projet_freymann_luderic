@@ -5,14 +5,12 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'shared/models/user';
 import { map } from 'rxjs/operators';
 import { ApiHttpInterceptor } from '../api/api-httpinterceptor';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  URL_SIGNIN: string = '/api/signin';
-  URL_SIGNUP: string = '/api/signup';
-
   private currentUserBehaviorSubject!: BehaviorSubject<User>;
   public currentUser!: Observable<User>;
 
@@ -49,7 +47,7 @@ export class AuthenticationService {
 
     data = `username=${username}&password=${password}`;
 
-    return this.http.post<User>(this.URL_SIGNIN, data, httpOptions).pipe(
+    return this.http.post<User>(environment.URL_SIGNIN, data, httpOptions).pipe(
       map((user) => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         localStorage.setItem(
@@ -73,6 +71,6 @@ export class AuthenticationService {
 
     data = `first_name=${formData.first_name}&last_name=${formData.last_name}&email=${formData.email}&username=${formData.username}&password=${formData.password}`;
 
-    return this.http.post<User>(this.URL_SIGNUP, data, httpOptions);
+    return this.http.post<User>(environment.URL_SIGNUP, data, httpOptions);
   }
 }

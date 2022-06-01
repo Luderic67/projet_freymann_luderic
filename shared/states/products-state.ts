@@ -8,6 +8,8 @@ import {
 } from 'shared/actions/product.action';
 import { CartProduct } from 'shared/models/cartProduct';
 import { Product } from 'shared/models/product';
+import { User } from 'shared/models/user';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ProductsStateModel } from './products-state-model';
 
 @State<ProductsStateModel>({
@@ -18,6 +20,14 @@ import { ProductsStateModel } from './products-state-model';
 })
 @Injectable()
 export class ProductState {
+  currentUser!: User;
+
+  constructor(private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(
+      (user) => (this.currentUser = user)
+    );
+  }
+
   @Selector()
   static getProductsLength(state: ProductsStateModel): number {
     return state.products.reduce(
@@ -51,7 +61,10 @@ export class ProductState {
   }
 
   updateLocalCart(_products: CartProduct[]) {
-    localStorage.setItem('cart', JSON.stringify(_products));
+    localStorage.setItem(
+      'cart-' + this.currentUser.username,
+      JSON.stringify(_products)
+    );
   }
 
   @Action(AddProduct)
